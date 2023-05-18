@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="Gamma.css">
+    <script src="Gamma.js"></script>
+</head>
+<body>
+<div id="header">
+  <div class="container">
+   <nav>
+        <img src="earth.gif" class="logo">
+       <ul id="sidemenu">
+                
+                <li><a href="/sign.html" >Log Out</a></li>
+                <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+
+        </ul> 
+        <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+
+   </nav>
+      <div class='container'>
+         <div class="row">
+         <div class="contant-left">
+                     
+           <div class="doc">
+           <h1>Documents</h1>
+                    <ul >
+                        <li><a href="CV.pdf"><figure><img src="cvimg.jpg" width="50" height="50"><figcaption >CV</figcaption></figure></a></li>
+                        <li><a href="CV.pdf"><figure><img src="cvimg.jpg" width="50" height="50"><figcaption >ARC</figcaption></figure></a></li>
+                        <li><a href="CV.pdf"><figure><img src="cvimg.jpg" width="50" height="50"><figcaption >PASSPORT</figcaption></figure></a></li>
+                        <li><a href="CV.pdf"><figure><img src="cvimg.jpg" width="50" height="50"><figcaption >ID</figcaption></figure></a></li>
+                        <li><a href="CV.pdf"><figure><img src="cvimg.jpg" width="50" height="50"><figcaption >PHOTO</figcaption></figure></a></li>
+                   </ul> 
+                </div>
+    
+         </div>
+           
+         <div class="contact-right">
+            <div class="todo-app">
+               <h2>To do list<img src="icon.png"></h1>
+                <div class="rw">
+                <input type="text" id="input-box" placeholder="Add task">
+                <button onclick="addTask()" >Add</button>
+                </div>
+                <ul id="list-container">
+                </ul>
+            </div>
+        </div>
+
+         
+         </div>
+         </div>
+
+         
+   </div>
+</div>
+
+<script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents=document.getElementsByClassName("tab-contents");
+         function opentab(tabname){
+            for (tablink of tablinks){
+               tablink.classList.remove("active-link");
+            }
+            for (tabcontent of tabcontents){
+               tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab")
+         }
+       var sidemen = document.getElementById("sidemenu");
+         function openmenu(){
+            sidemen.style.right="0";
+         }
+         function closemenu(){
+            sidemen.style.right="-200px";
+         }
+   </script>
+   <script>
+       const inputBox=document.getElementById("input-box"); 
+       const listContainer=document.getElementById("list-container"); 
+       function addTask(){
+         if(inputBox.value===''){
+            alert("You must write something");
+         }
+         else{
+            let li=document.createElement("li");
+            li.innerHTML=inputBox.value;
+            listContainer.appendChild(li);
+            let span = document.createElement("span");;
+            span.innerHTML="\u00d7";
+            li.appendChild(span);
+         }
+         inputBox.value="";
+         saveData();
+       }
+       listContainer.addEventListener("click",function(e){
+         if(e.target.tagName=="LI"){
+            e.target.classList.toggle("checked");
+            saveData()
+         }
+         else if(e.target.tagName=="SPAN"){
+            e.target.parentElement.remove();
+            saveData()
+         }
+       },false);
+       function saveData(){
+         localStorage.setItem("data",listContainer.innerHTML);
+       }
+       function showTask(){
+         listContainer.innerHTML=localStorage.getItem("data");
+       }
+       showTask();
+   </script>
+   <div class="copyright">
+      <p>Copyright &copy; Bijaylaxmi</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="Gamma.css">
+    <script src="Gammas.js"></script>
+</head>
+<body>
+<div class="container">
+   <nav>
+        <img src="earth.gif" class="logo">
+       <ul id="sidemenu">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/Gamma.html">CV</a></li>
+                <li><a href="/Gamma.html">Research and publication</a></li>
+                <li><a href="/Gamma.html">Contact Me</a></li>
+                <li><a href="\sign.html">Sign in</a></li>
+                <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+        </ul> 
+        <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+
+   </nav>
+      <div class="main">
+         <div class="outer-box">
+          <div class="inner-box">
+        <header class="signup-header">
+            <h1>Sign In</h1>
+        </header>
+        <main class="signup-body">
+            <form  action="">
+                <p>
+                    <label for="Username">User name</label>
+                    <input type="text" id="Username" placeholder="" >
+                </p>
+                <p>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="" >
+                </p>
+                <button class='login-btn' onclick="func()">Log In</button>
+            </form>
+            
+        </main>
+        
+    </div>
+ </div> 
+</div>
+</div>
+<div class="copyright">
+            <p>Copyright &copy; Bijaylaxmi</p>
+        </div>
+   <script>
+   function func(){
+    var email=document.getElementById("Username").value;
+    var pass=document.getElementById("password").value;
+
+    if(email=='gamma' && pass==123456)
+    {
+        alert("Sucessfull")
+        setTimeout(() =>{
+        window.location.replace("/insign.html");
+        });
+
+    }
+    else{
+        alert("Wrong values")
+    }
+    return false;
+ }
+</script>
+<script language="JavaScript">
+  window.history.forward(1);
+</script>
+</body>
+</html>
